@@ -8,6 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * This is a page to simulate the login page
+ * @verion 1.0
+ * @author Jianglian Ni
+ */
 public class MainActivity extends AppCompatActivity {
     /** this holds the text on the centre of the screen*/
     private TextView tv=null;
@@ -26,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         btn.setOnClickListener(clk ->{
             String password = et.getText().toString();
-            checkPasswordComplexity(password);
+            if (checkPasswordComplexity(password)){
+                tv.setText("Your password meets the requirements");
+            }
+            else{
+                tv.setText("You shall not pass!");
+            }
         });
     }
 
@@ -54,9 +64,7 @@ public class MainActivity extends AppCompatActivity {
             else if (isSpecialCharacter(c)){
                 foundSpecial=true;
             }
-
         }
-
         if(!foundUpperCase)
         {
             Toast.makeText(this,"Your password does not have an upper case letter",Toast.LENGTH_LONG).show() ;// Say that they are missing an upper case letter;
@@ -65,19 +73,16 @@ public class MainActivity extends AppCompatActivity {
 
         else if(!foundLowerCase)
         {
-            Toast.makeText(this,"Your password does not have an lower case letter", Toast.LENGTH_LONG); // Say that they are missing a lower case letter;
+            Toast.makeText(this,"Your password does not have an lower case letter", Toast.LENGTH_LONG).show(); // Say that they are missing a lower case letter;
 
             return false;
-
         }
-
         else if(!foundNumber) {
-            Toast.makeText( this, "Your password does not any number", Toast.LENGTH_LONG );
+            Toast.makeText( this, "Your password does not any number", Toast.LENGTH_LONG ).show();
             return false;
         }
-
         else if(!foundSpecial) {
-            Toast.makeText(this, "Your password does not any special letter", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Your password does not any special letter", Toast.LENGTH_LONG).show();
             return false;
         }
         else return true;

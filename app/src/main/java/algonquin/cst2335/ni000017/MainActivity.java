@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"Your password does not have an upper case letter",Toast.LENGTH_LONG).show() ;// Say that they are missing an upper case letter;
             return false;
+
         }
 
         else if(!foundLowerCase)
